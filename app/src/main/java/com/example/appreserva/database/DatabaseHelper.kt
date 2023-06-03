@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.appreserva.model.Cliente
 
 class DatabaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -39,19 +40,39 @@ class DatabaseHelper(context: Context) :
         onCreate(db)
     }
 
-    fun insertCliente(nombre: String, email: String, fechaNacimiento: String, dni: String, password: String): Long {
+    fun insertCliente(cliente: Cliente): Long {
         val values = ContentValues()
-        values.put(COLUMN_NOMBRE, nombre)
-        values.put(COLUMN_EMAIL, email)
-        values.put(COLUMN_FECHA_NACIMIENTO, fechaNacimiento)
-        values.put(COLUMN_DNI, dni)
-        values.put(COLUMN_PASSWORD, password)
+        values.put(COLUMN_NOMBRE, cliente.nombre)
+        values.put(COLUMN_EMAIL, cliente.email)
+        values.put(COLUMN_FECHA_NACIMIENTO, cliente.fechaNacimiento)
+        values.put(COLUMN_DNI, cliente.dni)
+        values.put(COLUMN_PASSWORD, cliente.password)
+
 
         val db = writableDatabase
         val id = db.insert(TABLE_NAME, null, values)
         db.close()
 
         return id
+    }
+
+    //Validacion de DNI y EMAIL
+    fun checkExistingEmail(email: String): Boolean {
+        val db = readableDatabase
+        val query = "SELECT $COLUMN_EMAIL FROM $TABLE_NAME WHERE $COLUMN_EMAIL = ?"
+        val cursor = db.rawQuery(query, arrayOf(email))
+        val exists = cursor.count > 0
+        cursor.close()
+        return exists
+    }
+
+    fun checkExistingDni(dni: String): Boolean {
+        val db = readableDatabase
+        val query = "SELECT $COLUMN_DNI FROM $TABLE_NAME WHERE $COLUMN_DNI = ?"
+        val cursor = db.rawQuery(query, arrayOf(dni))
+        val exists = cursor.count > 0
+        cursor.close()
+        return exists
     }
 
     fun getEmailAndPassword(): Pair<String, String>? {

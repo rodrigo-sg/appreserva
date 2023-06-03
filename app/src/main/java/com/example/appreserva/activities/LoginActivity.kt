@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
 
                 if (userCredentials != null && userCredentials.first == username && userCredentials.second == password) {
                     // Credenciales válidas
-                    if (username == "admin") {
+                    if (username == "admin"  && password == "123") {
                         // Redirigir a la actividad de administrador
                         val intent = Intent(this, AdminActivity::class.java)
                         startActivity(intent)
