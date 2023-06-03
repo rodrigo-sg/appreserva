@@ -3,10 +3,20 @@
     <string name="app_nameRegister">Registro</string>
     <string name="app_nameClient">Client</string>
     <string name="app_nameAdmin">Admin</string>
-    <string name="app_nameReserva">Admin</string>
+    <string name="app_nameReserva">Reserva</string>
     <string name="labelNombres">Ingrese Nombres</string>
     <string name="labelApellidos">Ingrese Apellidos</string>
     <string name="seleccionePiso">Seleccione Zona</string>
     <string name="btnGrabar">Reservar</string>
     <string name="labelCantidadPersonas">Cantidad de Personas</string>
+    <string name="title_reservas">Hola</string>
+    <string name="menu_logout">HOla</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Otros atributos del estilo -->
+    </style>
+    <string-array name="categorias">
+
+    </string-array>
+
 </resources>
+

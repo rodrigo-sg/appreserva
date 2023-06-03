@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".client.ClientActivity"
+            android:name=".client.MenuActivity"
             android:exported="true"
             android:label="@string/app_nameClient">
             <intent-filter>
@@ -55,15 +55,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ReservaActivity"
+            android:name=".client.ReservaActivity"
             android:exported="true"
             android:label="@string/app_nameReserva">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".client.VerReservaActivity"
+            android:exported="true"
+            android:label="@string/app_nameReserva">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
             </intent-filter>
         </activity>
+
+
+
     </application>
 
 </manifest>

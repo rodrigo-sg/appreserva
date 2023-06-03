@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appreserva.R
 import com.example.appreserva.admin.AdminActivity
-import com.example.appreserva.client.ClientActivity
+import com.example.appreserva.client.MenuActivity
 import com.example.appreserva.database.DatabaseHelper
 
 
@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
                         finish()
                     } else {
                         // Redirigir a la actividad de cliente
-                        val intent = Intent(this, ClientActivity::class.java)
+                        val intent = Intent(this, MenuActivity::class.java)
                         startActivity(intent)
                         finish()
                     }

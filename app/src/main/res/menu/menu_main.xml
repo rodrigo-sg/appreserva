@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_reservas"
+        android:icon="@drawable/menu"
+        android:title="Reservas" />
+
+    <item
+        android:id="@+id/menu_ver_reserva"
+        android:icon="@drawable/menu"
+        android:title="Ver Reserva" />
+
+    <item
+        android:id="@+id/menu_menu"
+        android:icon="@drawable/profile"
+        android:title="Menú" />
+
+    <item
+        android:id="@+id/menu_configuraciones"
+        android:icon="@drawable/setting"
+        android:title="Configuraciones" />
+
+</menu>
+
