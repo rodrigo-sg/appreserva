@@ -22,6 +22,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var backButton: TextView
     private lateinit var changePasswordButton: TextView
 
+
     private lateinit var databaseHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +38,7 @@ class RegisterActivity : AppCompatActivity() {
         registerButton = findViewById(R.id.buttonRegister)
         backButton = findViewById(R.id.buttonBackToLogin)
         changePasswordButton = findViewById(R.id.buttonChangePassword)
-        editTextBirthdate = findViewById(R.id.editTextBirthdate)
+
 
         databaseHelper = DatabaseHelper(this)
 

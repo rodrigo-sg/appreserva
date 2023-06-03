@@ -10,13 +10,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.appreserva.R
 import com.example.appreserva.admin.AdminActivity
 import com.example.appreserva.client.ClientActivity
-
+import com.example.appreserva.database.DatabaseHelper
 
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val databaseHelper = DatabaseHelper(this)
 
         val usernameEditText: EditText = findViewById(R.id.editTextUsername)
         val passwordEditText: EditText = findViewById(R.id.editTextPassword)
@@ -31,19 +33,24 @@ class LoginActivity : AppCompatActivity() {
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Por favor, ingresa tus credenciales", Toast.LENGTH_SHORT).show()
             } else {
-                // Aquí puedes agregar la lógica de autenticación
-                // Verificar las credenciales ingresadas y redirigir a la pantalla correspondiente
+                val userCredentials = databaseHelper.getEmailAndPassword()
 
-                if (username == "admin" && password == "admin123") {
-                    // Ejemplo de redirección a la actividad de administrador
-                    val intent = Intent(this, AdminActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                if (userCredentials != null && userCredentials.first == username && userCredentials.second == password) {
+                    // Credenciales válidas
+                    if (username == "admin") {
+                        // Redirigir a la actividad de administrador
+                        val intent = Intent(this, AdminActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        // Redirigir a la actividad de cliente
+                        val intent = Intent(this, ClientActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                 } else {
-                    // Ejemplo de redirección a la actividad de cliente
-                    val intent = Intent(this, ClientActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    // Credenciales inválidas
+                    Toast.makeText(this, "Credenciales inválidas", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -59,3 +66,4 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 }
+
